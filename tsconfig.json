@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "target": "ES2023",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "allowImportingTsExtensions": true,
+        "lib": [
+            "ES2023"
+        ],
+        "types": [
+            "@cloudflare/workers-types",
+            "bun"
+        ],
+        "strict": true,
+        "noEmit": true,
+        "noUncheckedIndexedAccess": true,
+        "exactOptionalPropertyTypes": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true
+    },
+    "include": [
+        "source/**/*.ts",
+        "source/**/*.d.ts",
+        "tests/**/*.ts"
+    ]
+}

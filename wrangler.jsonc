@@ -1,0 +1,16 @@
+{
+    "$schema": "./node_modules/wrangler/config-schema.json",
+    "name": "install",
+    "main": "./source/worker.ts",
+    "compatibility_date": "2026-08-19",
+    "rules": [
+        {
+            "type": "Text",
+            "globs": [
+                "**/*.sh",
+                "**/*.ps1"
+            ],
+            "fallthrough": true
+        }
+    ]
+}
