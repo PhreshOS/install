@@ -66,7 +66,7 @@ case "$1" in
         mkdir -p "$(dirname "$entry")"
         printf 'export {}\\n' > "$entry"
         ;;
-    *) printf '%s\\n' "$*" >> "$INSTALL_LOG" ;;
+    *) printf '%s|%s\\n' "$PATH" "$*" >> "$INSTALL_LOG" ;;
 esac
 `)
 
@@ -112,9 +112,15 @@ printf 'export {}\\n' > "$runtime/lib/node_modules/npm/bin/npm-cli.js"
 
         const installs = (await readFile(installLog, "utf8")).trim().split("\n")
 
-        expect(installs).toHaveLength(2)
+        const runtimeBin = join(home, "Library", "Application Support", "PhreshOS", "Bootstrap", "node", "node-v24.99.1-darwin-arm64", "bin")
+        const cliEntry = join(home, "Library", "Application Support", "PhreshOS", "Bootstrap", "cli", "lib", "node_modules", "@phreshos", "cli", "dist", "cli.js")
 
-        expect(installs.every(value => value.endsWith(" system install"))).toBe(true)
+        expect(installs).toEqual([
+
+            `${runtimeBin}:${environment.PATH}|${cliEntry} system install`,
+
+            `${runtimeBin}:${environment.PATH}|${cliEntry} system install`
+        ])
 
         const profile = await readFile(join(home, ".zshrc"), "utf8")
 

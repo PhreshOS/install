@@ -5,6 +5,10 @@ set -euo pipefail
 readonly node_channel="https://nodejs.org/dist/latest-v24.x"
 readonly cli_package="@phreshos/cli@latest"
 
+export LANG=C
+export LC_ALL=C
+export npm_config_update_notifier=false
+
 fail() {
 
     printf '\nphresh: %s\n\n' "$1" >&2
@@ -132,7 +136,7 @@ readonly pending_launcher="$temporary_directory/phresh"
 
 mkdir -p "$launcher_directory"
 
-printf '#!/usr/bin/env bash\nexec %q %q "$@"\n' "$node" "$cli_entry" > "$pending_launcher"
+printf '#!/usr/bin/env bash\nexport PATH=%q:"${PATH:-}"\nexec %q %q "$@"\n' "$runtime_root/bin" "$node" "$cli_entry" > "$pending_launcher"
 
 chmod 755 "$pending_launcher"
 

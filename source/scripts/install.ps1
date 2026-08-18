@@ -3,6 +3,8 @@ $ErrorActionPreference = "Stop"
 $NodeChannel = "https://nodejs.org/dist/latest-v24.x"
 $CliPackage = "@phreshos/cli@latest"
 
+$env:npm_config_update_notifier = "false"
+
 if ([Environment]::Is64BitOperatingSystem -ne $true) {
 
     throw "PhreshOS requires a 64-bit Windows installation"
@@ -113,7 +115,7 @@ try {
 
     New-Item -ItemType Directory -Path $LauncherDirectory -Force | Out-Null
 
-    $LauncherContent = "@echo off`r`n`"$Node`" `"$CliEntry`" %*`r`n"
+    $LauncherContent = "@echo off`r`nset `"PATH=$RuntimeRoot;%PATH%`"`r`n`"$Node`" `"$CliEntry`" %*`r`n"
 
     Set-Content -LiteralPath $Launcher -Value $LauncherContent -Encoding Ascii
 
