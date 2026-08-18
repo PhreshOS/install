@@ -2,7 +2,7 @@
     "$schema": "./node_modules/wrangler/config-schema.json",
     "name": "install",
     "main": "./source/worker.ts",
-    "compatibility_date": "2026-08-19",
+    "compatibility_date": "2026-08-18",
     "rules": [
         {
             "type": "Text",
