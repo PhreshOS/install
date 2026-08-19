@@ -38,3 +38,11 @@ jobs:
 
             - if: runner.os == 'Windows'
               run: bun run verify:ps1
+
+    windows-install:
+        runs-on: windows-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - run: powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify-windows-install.ps1

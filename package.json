@@ -9,6 +9,7 @@
         "test": "bun test",
         "verify:sh": "bash -n source/scripts/install.sh",
         "verify:ps1": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify-powershell.ps1",
+        "verify:windows-install": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify-windows-install.ps1",
         "build": "bun run clean && wrangler deploy --dry-run --outdir dist",
         "check": "bun run typecheck && bun run test && bun run verify:sh && bun run build",
         "dev": "wrangler dev",
