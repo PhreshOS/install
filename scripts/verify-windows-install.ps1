@@ -21,7 +21,10 @@ try {
 
     foreach ($Expected in @("desktop", "http://localhost:4300", "service", "ready", "startup", "enabled")) {
 
-        if (-not $Status.Contains($Expected)) throw "The installed PhreshOS System status is incomplete: $Status"
+        if (-not $Status.Contains($Expected)) {
+
+            throw "The installed PhreshOS System status is incomplete: $Status"
+        }
     }
 
     $Desktop = Invoke-WebRequest -Uri "http://localhost:4300/" -UseBasicParsing

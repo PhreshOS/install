@@ -1,12 +1,22 @@
-$Errors = $null
-$Tokens = $null
-$Path = Join-Path $PSScriptRoot "..\source\scripts\install.ps1"
+$Paths = @(
 
-[Management.Automation.Language.Parser]::ParseFile($Path, [ref] $Tokens, [ref] $Errors) | Out-Null
+    (Join-Path $PSScriptRoot "..\source\scripts\install.ps1"),
 
-if ($Errors.Count -gt 0) {
+    (Join-Path $PSScriptRoot "verify-windows-install.ps1")
+)
 
-    $Errors | ForEach-Object { Write-Error $_.Message }
+foreach ($Path in $Paths) {
 
-    exit 1
+    $Errors = $null
+
+    $Tokens = $null
+
+    [Management.Automation.Language.Parser]::ParseFile($Path, [ref] $Tokens, [ref] $Errors) | Out-Null
+
+    if ($Errors.Count -gt 0) {
+
+        $Errors | ForEach-Object { Write-Error $_.Message }
+
+        exit 1
+    }
 }
