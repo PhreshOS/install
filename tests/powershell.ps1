@@ -2,7 +2,7 @@ $Paths = @(
 
     (Join-Path $PSScriptRoot "..\source\scripts\install.ps1"),
 
-    (Join-Path $PSScriptRoot "verify-windows-install.ps1")
+    (Join-Path $PSScriptRoot "windows-install.ps1")
 )
 
 foreach ($Path in $Paths) {

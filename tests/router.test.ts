@@ -1,4 +1,4 @@
-import { describe, expect, test } from "bun:test"
+import { describe, expect, test } from "vitest"
 import route from "../source/router.ts"
 
 const scripts = { sh: "shell\n", ps1: "powershell\n" }

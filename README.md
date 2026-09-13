@@ -49,7 +49,14 @@ bun run build
 bun run deploy
 ```
 
-`check` verifies the TypeScript, tests, shell script, and Worker build.
+`verify` runs static checks, the Worker build, and the automated tests, including
+bootstrap syntax checks for the current platform.
+
+`check` performs static checks, `build` creates distributable output, and `test`
+runs Vitest assertions from `tests/`. Run `build` before testing built artifacts.
+`verify` runs `check`, `build`, and `test` in order. Operational tooling belongs
+in `scripts/`; tests and their fixtures belong in `tests/`. Verification uses
+the committed dependency graph without local package substitutions.
 
 ## Related repositories
 
@@ -63,3 +70,7 @@ bun run deploy
 ## License
 
 Licensed under the [MIT License](LICENSE). Copyright © 2026 Zohayr SLILEH.
+
+`test:platform` explicitly selects native service/installation tests for the
+current OS. These may change temporary host services; CI runs them on disposable
+runners after building.

@@ -1,35 +1,34 @@
 {
-    "name": "@phreshos/install",
-    "private": true,
-    "type": "module",
-    "description": "The official clean-machine bootstrap for PhreshOS.",
-    "scripts": {
-        "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
-        "typecheck": "tsc --noEmit",
-        "test": "bun test",
-        "verify:sh": "bash -n source/scripts/install.sh",
-        "verify:ps1": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify-powershell.ps1",
-        "verify:windows-install": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify-windows-install.ps1",
-        "build": "bun run clean && wrangler deploy --dry-run --outdir dist",
-        "check": "bun run typecheck && bun run test && bun run verify:sh && bun run build",
-        "dev": "wrangler dev",
-        "deploy": "wrangler deploy"
-    },
-    "author": "Zohayr SLILEH",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/PhreshOS/install.git"
-    },
-    "bugs": {
-        "url": "https://github.com/PhreshOS/install/issues"
-    },
-    "homepage": "https://install.phreshos.com",
-    "packageManager": "bun@1.3.14",
-    "devDependencies": {
-        "@cloudflare/workers-types": "5.20260818.1",
-        "@types/bun": "1.3.14",
-        "typescript": "7.0.2",
-        "wrangler": "4.124.0"
-    }
+  "name": "@phreshos/install",
+  "private": true,
+  "type": "module",
+  "description": "The official clean-machine bootstrap for PhreshOS.",
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
+    "test": "vitest run --project default",
+    "build": "node --run clean && wrangler deploy --dry-run --outdir dist",
+    "check": "tsc --noEmit",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "verify": "node --run check && node --run build && node --run test",
+    "test:platform": "vitest run --project platform"
+  },
+  "author": "Zohayr SLILEH",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PhreshOS/install.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PhreshOS/install/issues"
+  },
+  "homepage": "https://install.phreshos.com",
+  "packageManager": "bun@1.3.14",
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20260818.1",
+    "typescript": "7.0.2",
+    "wrangler": "4.124.0",
+    "vitest": "^4.1.10",
+    "@types/node": "^24.0.0"
+  }
 }

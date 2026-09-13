@@ -9,7 +9,7 @@
         ],
         "types": [
             "@cloudflare/workers-types",
-            "bun"
+            "node"
         ],
         "strict": true,
         "noEmit": true,

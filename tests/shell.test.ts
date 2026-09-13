@@ -1,4 +1,4 @@
-import { afterAll, describe, expect, test } from "bun:test"
+import { afterAll, describe, expect, test } from "vitest"
 import { createHash } from "node:crypto"
 import { chmod, mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises"
 import { tmpdir } from "node:os"
