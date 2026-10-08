@@ -23,7 +23,8 @@ Linux and macOS:
 curl -fsSL https://install.phreshos.com/sh | bash
 ```
 
-Windows PowerShell:
+Windows PowerShell (Windows is not fully supported yet; some Programs do not
+work there):
 
 ```powershell
 irm https://install.phreshos.com/ps1 | iex
